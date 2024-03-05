@@ -309,6 +309,39 @@ TEST(BSTTest, Postorder)
     EXPECT_EQ(trim_copy(output), "bar foo world hello");
 }
 
+TEST(BSTTest, FindMin)
+{
+    BST<int> bstint;
+
+    bstint.insert(10);
+    bstint.insert(5);
+    bstint.insert(12);
+    bstint.insert(4);
+    bstint.insert(8);
+    bstint.insert(6);
+    bstint.insert(14);
+    bstint.insert(7);
+    bstint.insert(9);
+    EXPECT_EQ(bstint.findMin(), 4);
+}
+
+
+TEST(BSTTest, FindMax)
+{
+    BST<int> bstint;
+
+    bstint.insert(10);
+    bstint.insert(5);
+    bstint.insert(12);
+    bstint.insert(4);
+    bstint.insert(8);
+    bstint.insert(6);
+    bstint.insert(14);
+    bstint.insert(7);
+    bstint.insert(9);
+    EXPECT_EQ(bstint.findMax(), 14);
+}
+
 
 TEST(BSTTest, RemoveException)
 {

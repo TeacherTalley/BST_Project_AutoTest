@@ -43,6 +43,8 @@ cd $repo/build
 ./AutoTest_gtests --gtest_filter=BSTTest.Inorder
 ./AutoTest_gtests --gtest_filter=BSTTest.Preorder
 ./AutoTest_gtests --gtest_filter=BSTTest.Postorder
+./AutoTest_gtests --gtest_filter=BSTTest.FindMin
+./AutoTest_gtests --gtest_filter=BSTTest.FindMax
 ./AutoTest_gtests --gtest_filter=BSTTest.RemoveException
 ./AutoTest_gtests --gtest_filter=BSTTest.InsertException
 
