@@ -17,3 +17,4 @@ AutoTest_gtests
 main.cpp
 BST.h
 
+local_testing
