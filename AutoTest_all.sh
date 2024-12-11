@@ -9,16 +9,16 @@ cd $repo
 echo
 echo "#################### START: AutoTest Results #####################"
 echo "--- Checking code format (cpplint) ---"
-./AutoTest_Style.sh
+./AutoTest_Style.sh $repo main.cpp BST.h
 echo
 echo "--- Checking main output (diff) ---"
 cd build
 # Output test disabled for now
 # ../AutoTest_OutputTest.sh
-# echo
-# echo "--- Unit testing (googletest - all tests at once) ---"
-# ctest
-# echo
+echo
+echo "--- Unit testing (googletest - all tests at once) ---"
+ctest
+echo
 echo "--- Test user commands individually ---"
 # AutoTest_OutputTest.py assumes starting in the source directory
 cd ../..
@@ -32,23 +32,22 @@ cd ../..
 ./$repo/AutoTest_OutputTest.py -t test_delete_not_found
 ./$repo/AutoTest_OutputTest.py -t test_print
 echo
+# GitHub Classroom auto-grading runs the following commands from the current
+# directory of the project being tested.  To similate that here, we need to
+# change to the project directory before running the tests.
+#
 echo "--- Unit testing (single test at a time) ---"
-cd $repo/build
-./AutoTest_gtests --gtest_filter=BSTTest.Empty
-./AutoTest_gtests --gtest_filter=BSTTest.Search
-./AutoTest_gtests --gtest_filter=BSTTest.SearchNotFound
-./AutoTest_gtests --gtest_filter=BSTTest.SearchFoundAndNotFound
-./AutoTest_gtests --gtest_filter=BSTTest.Insert
-./AutoTest_gtests --gtest_filter=BSTTest.Delete
-./AutoTest_gtests --gtest_filter=BSTTest.Inorder
-./AutoTest_gtests --gtest_filter=BSTTest.Preorder
-./AutoTest_gtests --gtest_filter=BSTTest.Postorder
-./AutoTest_gtests --gtest_filter=BSTTest.FindMin
-./AutoTest_gtests --gtest_filter=BSTTest.FindMax
-./AutoTest_gtests --gtest_filter=BSTTest.RemoveException
-./AutoTest_gtests --gtest_filter=BSTTest.InsertException
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Empty
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Search
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.SearchNotFound
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Insert
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Remove
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Inorder
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Preorder
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.Postorder
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.RemoveException
+./BST_Project_AutoTest/AutoTest_gtest.sh BSTTest.InsertException
 
 echo
-cd ..
 echo "#################### END: AutoTest Results   #####################"
 echo
